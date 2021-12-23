@@ -6,6 +6,7 @@
 
 body {
     background-color: crimson;
+    color: blanchedalmond;
 }
 
 header {
@@ -22,10 +23,16 @@ h1 {
     font-weight: 600;
 }
 
-.greenbtn {
-    background-color: black;
-    color: wheat;
-    font-weight: bold;
+h2, h3, ul, p {
+    margin: 1rem;
+}
+
+h2, h3 {
+    font-size: 2rem;
+}
+
+ul, p {
+    font-size: 1rem;
 }
 
 header span {
@@ -33,10 +40,21 @@ header span {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+
+.greenbtn {
+    background-color: black;
+    color: blanchedalmond;
+    font-weight: bold;
+}
+
 .t10, .t11, .t12, .t13, .t14 {
     color: darkgreen;
 }
 
+.box {
+    margin: 0;
+    padding: 2rem;
+}
 /* Title text */
 /* .t1 {}
 .t2 {}
