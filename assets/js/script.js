@@ -1,7 +1,6 @@
 var formEntry = document.querySelector("#search");
 var submitButton = document.querySelector("#submit-button")
 var searchedMovie = document.querySelector("#searched-movie")
-var movieTitle = document.querySelector("movie-title")
 
 var formSubmitHandler = function(event) {
     // prevent page from reloading
@@ -66,7 +65,7 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endg
     if (response.ok) {
         response.json().then(function(data) {
             console.log("Movie data", data);
-            displayMovieTitle(data);
+            displayMovieTitle(movieSearched);
             //checkIfOnNetflix(data);
         });
     } else {
@@ -80,12 +79,8 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endg
 });
 }
 
-var displayMovieTitle = function(data) {
-    //searchedMovie.textContent = movieSearched;
-    console.log("displayMovieTitle", data);
-
-    movieTitle.textContent = data.Search[0].Title;
-    searchedMovie.appendChild(movieTitle);
+var displayMovieTitle = function(movieSearched) {
+    searchedMovie.textContent = movieSearched;
 
 
 };
