@@ -10,14 +10,68 @@
     <title>Netflix'n Chili</title>
 </head>
 <body>
-    <header>
-        <h1>Netflix'n Chili</h1>
+    <header class="z-depth-5">
+        <h1>
+           <span class="t1">N</span>
+           <span class="t2">e</span> 
+           <span class="t3">t</span> 
+           <span class="t4">f</span> 
+           <span class="t5">l</span> 
+           <span class="t6">i</span> 
+           <span class="t7">x</span> 
+           <span class="t8">'</span> 
+           <span class="t9">n</span> 
+           <br> 
+           <span class="t10">C</span>
+           <span class="t11">h</span>
+           <span class="t12">i</span>
+           <span class="t13">l</span>
+           <span class="t14">i 🌶️</span>    
+        </h1>
         <!--Hey this is Wesley-->
         <!-- Here is another line -->
         <!-- Another one -->
     </header>
     <main>
+        <div class="container box">
+            <div class="row">
+                <h2>Search for a Movie, Get a Recipe</h2>
+                <form class="col s12 col m6">
+                    <div class="card black z-depth-5 input-field col s12 col m6">
+                        <label for="search"><i class="material-icons">search</i> Search</label>
+                        <input id="search" type="text" class="validate utilitywhite" /> 
+                        <button class="waves-effect waves-light btn-large greenbtn" id="submit-button">Search</button>
+                    </div>
+                </form>
+                
+                <section class="col s12 col m6 card black z-depth-5">
+                    <h2>Movie Title:<span id="searched-movie"></span> </h2>
+                    <p>Movie Image<span id="movie-cover"></span></p>
+                </section>
+            </div>
 
+            <div class="row">
+                <section class="col s12 col m6">
+                    <div class="card black z-depth-5 col s12 col m6">
+                    <h3>Past Recipes</h3>
+                    <ul>
+                        <li>Past Recipe Title 1</li>
+                        <li>Past Recipe Title 2</li>
+                        <li>Past Recipe Title 3</li>
+                    </ul>
+                    </div>
+                </section>
+
+                <section class="col s12 col m6 card black z-depth-5">
+                    <h2>Recipe Title:</h2>
+                    <ul>
+                        <li>Recipe Image:</li>
+                        <li>Ingredients:</li>
+                        <li>Directions:</li>                 
+                    </ul>
+                </section>
+            </div>
+        </div>
     </main>
     <footer>
 
