@@ -7,6 +7,12 @@ var moviePoster = document.querySelector("#movie-poster")
 var image = document.querySelector("#image")
 var recipeParent = document.querySelector("#recipe-parent")
 var recipeImage = document.querySelector("#recipe-image")
+var recipeTitle = document.querySelector("#recipe-title")
+var recipeTitleParent = document.querySelector("#recipe-title-parent")
+var recipeLink = document.querySelector("#recipe-link")
+var recipeDirections = document.querySelector("#recipe-directions")
+var linkList = document.querySelector("#link-list")
+var recipeList = document.querySelector("#recipe-list")
 
 var formSubmitHandler = function(event) {
     // prevent page from reloading
@@ -16,7 +22,7 @@ var formSubmitHandler = function(event) {
 
     if(search) {
         getRecipe();
-        getMovie();
+        getMovie(search);
     } else {
         alert("Movie not valid")
         //!TO REPLACE: This alert will need to be replaced with a modal
@@ -56,8 +62,8 @@ var getRecipe = function () {
     
 //User enteres movie name and getMovie poster image. Search example Avengers Endgame
 //API URL: https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative/
-var getMovie = function () {
-fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1", {
+var getMovie = function (search) {
+fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=json&page=1", {
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
@@ -97,9 +103,19 @@ var displayMovieTitle = function(data) {
 
 var displayRecipe = function(data) {
     console.log("displayRecipe", data)
+    
+    recipeTitle.textContent = data.title;
+    recipeTitleParent.appendChild(recipeTitle);
 
     recipeImage.setAttribute("src", data.image);
-    recipeParent.appendChild(recipeImage);
+    image.appendChild(recipeImage);
+
+    recipeLink.setAttribute("href", data.sourceUrl);
+    recipeLink.setAttribute("target", "_blank")
+    linkList.appendChild(recipeLink);
+
+    recipeDirections.textContent = data.instructions;
+    recipeList.appendChild(recipeDirections)
 }
 
 submitButton.addEventListener("click", formSubmitHandler);
