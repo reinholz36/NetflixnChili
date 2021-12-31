@@ -61,6 +61,14 @@ header span {
     margin: 0;
     padding: 2rem;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
 /* Title text */
 /* .t1 {}
 .t2 {}

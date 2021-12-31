@@ -14,14 +14,22 @@ var recipeDirections = document.querySelector("#recipe-directions")
 var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
 
+// var randomizeRecipe = function() {
+//     var randomNumber = (Math.floor(Math.random() *400000) +1)
+//     console.log("Random Number", randomNumber)
+//     return randomNumber
+// }
+
 var formSubmitHandler = function(event) {
     // prevent page from reloading
     event.preventDefault();
 
     var search = formEntry.value.trim();
-
+    var randomNumber = (Math.floor(Math.random() *20) +20)
+    console.log(randomNumber)
     if(search) {
-        getRecipe();
+        //randomizeRecipe()
+        getRecipe(randomNumber);
         getMovie(search);
     } else {
         alert("Movie not valid")
@@ -31,9 +39,9 @@ var formSubmitHandler = function(event) {
 
 //Recipe fetch the 479101 in the url below is the recipe id number
 // API URL: https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
-var getRecipe = function () {
+var getRecipe = function (randomNumber) {
     
-    fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information", {
+    fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ randomNumber +"/information", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -112,6 +120,7 @@ var displayRecipe = function(data) {
 
     recipeLink.setAttribute("href", data.sourceUrl);
     recipeLink.setAttribute("target", "_blank")
+    recipeLink.className = "show"
     linkList.appendChild(recipeLink);
 
     recipeDirections.textContent = data.instructions;
