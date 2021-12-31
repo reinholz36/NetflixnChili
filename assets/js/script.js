@@ -1,7 +1,12 @@
 var formEntry = document.querySelector("#search");
 var submitButton = document.querySelector("#submit-button")
 var searchedMovie = document.querySelector("#searched-movie")
-var movieTitle = document.querySelector("movie-title")
+var movieTitle = document.querySelector("#movie-title")
+var movieParent = document.querySelector("#movie-parent")
+var moviePoster = document.querySelector("#movie-poster")
+var image = document.querySelector("#image")
+var recipeParent = document.querySelector("#recipe-parent")
+var recipeImage = document.querySelector("#recipe-image")
 
 var formSubmitHandler = function(event) {
     // prevent page from reloading
@@ -33,6 +38,7 @@ var getRecipe = function () {
         if (response.ok) {
             response.json().then(function(data) {
                 console.log("Recipe data", data);
+                displayRecipe(data);
             });
         } else {
             //!TO REPLACE: This alert will need to be replaced with a modal
@@ -81,13 +87,19 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endg
 }
 
 var displayMovieTitle = function(data) {
-    //searchedMovie.textContent = movieSearched;
-    console.log("displayMovieTitle", data);
-
+    
     movieTitle.textContent = data.Search[0].Title;
-    searchedMovie.appendChild(movieTitle);
+    movieParent.appendChild(movieTitle);
 
-
+    moviePoster.setAttribute("src", data.Search[0].Poster);
+    movieParent.appendChild(moviePoster);
 };
+
+var displayRecipe = function(data) {
+    console.log("displayRecipe", data)
+
+    recipeImage.setAttribute("src", data.image);
+    recipeParent.appendChild(recipeImage);
+}
 
 submitButton.addEventListener("click", formSubmitHandler);
