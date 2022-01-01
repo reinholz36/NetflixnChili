@@ -13,6 +13,9 @@ var recipeLink = document.querySelector("#recipe-link")
 var recipeDirections = document.querySelector("#recipe-directions")
 var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
+var pastRecipe = document.querySelector("#past-recipe")
+var recipeAnchor = document.querySelector("#recipe-anchor")
+var pastRecipe1 = document.querySelector("#past-recipe-1")
 
 // var randomizeRecipe = function() {
 //     var randomNumber = (Math.floor(Math.random() *400000) +1)
@@ -110,7 +113,7 @@ var displayMovieTitle = function(data) {
 };
 
 var displayRecipe = function(data) {
-    console.log("displayRecipe", data)
+    console.log("displayRecipe", data);
     
     recipeTitle.textContent = data.title;
     recipeTitleParent.appendChild(recipeTitle);
@@ -119,12 +122,27 @@ var displayRecipe = function(data) {
     image.appendChild(recipeImage);
 
     recipeLink.setAttribute("href", data.sourceUrl);
-    recipeLink.setAttribute("target", "_blank")
-    recipeLink.className = "show"
+    recipeLink.setAttribute("target", "_blank");
+    recipeLink.className = "show";
     linkList.appendChild(recipeLink);
 
     recipeDirections.textContent = data.instructions;
-    recipeList.appendChild(recipeDirections)
+    recipeList.appendChild(recipeDirections);
+    
+    var pastRecipeBox = function(data) {
+        recipeAnchor.setAttribute("href", data.sourceUrl);
+        recipeAnchor.textContent = data.title;
+        recipeAnchor.setAttribute("target", "_blank")
+        pastRecipe.appendChild(pastRecipe1);
+
+        saveRecipe();
+    }
+    
+    pastRecipeBox(data);
+}
+
+var saveRecipe = function() {
+    localStorage.setItem("recipes", pastRecipe1)
 }
 
 submitButton.addEventListener("click", formSubmitHandler);
