@@ -1,8 +1,6 @@
 var formEntry = document.querySelector("#search");
 var submitButton = document.querySelector("#submit-button")
 var searchedMovie = document.querySelector("#searched-movie")
-<<<<<<< HEAD
-=======
 var movieTitle = document.querySelector("#movie-title")
 var movieParent = document.querySelector("#movie-parent")
 var moviePoster = document.querySelector("#movie-poster")
@@ -15,7 +13,6 @@ var recipeLink = document.querySelector("#recipe-link")
 var recipeDirections = document.querySelector("#recipe-directions")
 var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
->>>>>>> 43cf2cc725051734bb56d67c5650487a0c9e7cbf
 
 var formSubmitHandler = function(event) {
     // prevent page from reloading
@@ -95,16 +92,10 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
 });
 }
 
-<<<<<<< HEAD
-var displayMovieTitle = function(movieSearched) {
-    searchedMovie.textContent = movieSearched;
-
-=======
 var displayMovieTitle = function(data) {
     
     movieTitle.textContent = data.Search[0].Title;
     movieParent.appendChild(movieTitle);
->>>>>>> 43cf2cc725051734bb56d67c5650487a0c9e7cbf
 
     moviePoster.setAttribute("src", data.Search[0].Poster);
     movieParent.appendChild(moviePoster);
