@@ -25,15 +25,17 @@ var formSubmitHandler = function(event) {
     event.preventDefault();
 
     var search = formEntry.value.trim();
-    var randomNumber = (Math.floor(Math.random() *20) +20)
+    var randomNumber = (Math.floor(Math.random() *20) +5000)
     console.log(randomNumber)
     if(search) {
         //randomizeRecipe()
         getRecipe(randomNumber);
         getMovie(search);
+        formEntry.value = "";
     } else {
         alert("Movie not valid")
         //!TO REPLACE: This alert will need to be replaced with a modal
+        formEntry.value = "";
     }
 }
 
@@ -86,7 +88,7 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
     if (response.ok) {
         response.json().then(function(data) {
             console.log("Movie data", data);
-            displayMovieTitle(movieSearched);
+            displayMovieTitle(data);
             //checkIfOnNetflix(data);
         });
     } else {
