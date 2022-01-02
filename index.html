@@ -37,14 +37,14 @@
             <div class="row">
                 <h2>Search for a Movie, Get a Recipe</h2>
                 <form class="col s12 col m6">
-                    <div class="card black z-depth-5 input-field col s12 col m6">
+                    <div class="card black z-depth-5 input-field col s12 col m6 border-radius">
                         <label for="search"><i class="material-icons">search</i> Search</label>
                         <input id="search" type="text" class="validate utilitywhite" /> 
                         <button class="waves-effect waves-light btn-large greenbtn" id="submit-button">Search</button>
                     </div>
                 </form>
                 
-                <section id="movie-parent" class="col s12 col m6 card black z-depth-5">
+                <section id="movie-parent" class="col s12 col m6 card black z-depth-5 border-radius">
                     <h2 id="movie-title">Movie Title:<span id="searched-movie"></span> <img id="movie-poster"> </h2>
                     <p><span id="movie-cover"></span></p>
                 </section>
@@ -52,24 +52,22 @@
 
             <div class="row">
                 <section class="col s12 col m6">
-                    <div class="card black z-depth-5 col s12 col m6">
+                    <div class="card black z-depth-5 col s12 col m6 border-radius">
                     <h3>Past Recipes</h3>
-                    <ul>
-                        <li>Past Recipe Title 1</li>
-                        <li>Past Recipe Title 2</li>
-                        <li>Past Recipe Title 3</li>
+                    <ul id="past-recipe">
+                        <li><a id="recipe-anchor"></a></li>
                     </ul>
                     </div>
                 </section>
 
-                <section class="col s12 col m6 card black z-depth-5">
+                <section class="col s12 col m6 card black z-depth-5 border-radius">
                     <h2 id="recipe-title-parent"><span id="recipe-title"></span></h2>
                     <ul id="recipe-parent">
-                        <li id="image"><img class="circle" id="recipe-image"></li>
-                        <li id="link-list"><a id="recipe-link">Click Here For Full Recipe</a></li>
+                        <li id="image"><img class="border-radius" id="recipe-image"></li>
+                        <li id="link-list"><a class="hidden" id="recipe-link">Click Here For Full Recipe</a></li>
                         <li id="recipe-list">Directions: <p id="recipe-directions"></p></li>                 
                     </ul>
-                </section>
+                </section> 
             </div>
         </div>
     </main>
