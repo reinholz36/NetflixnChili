@@ -133,7 +133,7 @@ var displayRecipe = function(data) {
         recipeAnchor.setAttribute("href", data.sourceUrl);
         recipeAnchor.textContent = data.title;
         recipeAnchor.setAttribute("target", "_blank")
-        pastRecipe.appendChild(pastRecipe1);
+        pastRecipe.appendChild(recipeAnchor);
 
         saveRecipe();
     }
@@ -142,7 +142,13 @@ var displayRecipe = function(data) {
 }
 
 var saveRecipe = function() {
-    localStorage.setItem("recipes", pastRecipe1)
+    localStorage.setItem("recipes", recipeAnchor)
 }
+
+var loadRecipe = function() {
+    var savedRecipe = localStorage.getItem("recipes")
+}
+
+
 
 submitButton.addEventListener("click", formSubmitHandler);
