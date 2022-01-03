@@ -81,9 +81,9 @@ var getRecipe = function (randomNumber) {
 }
 
 // get recipe based on past recipe button click
-var getRecipeHistory = function (randomNumber) {
+var getRecipeHistory = function (historicalRecipe) {
     
-    fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ randomNumber +"/information", {
+    fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ historicalRecipe +"/information", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -127,6 +127,7 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
             console.log("Movie data", data);
             displayMovieTitle(data);
             //checkIfOnNetflix(data);
+            
         });
     } else {
         //!TO REPLACE: This alert will need to be replaced with a modal
@@ -188,7 +189,7 @@ var pastRecipeBox = function(data) {
 
 
 
-// This function displays historical recipes
+// This function displays admin's choice and historical recipe buttons
 window.onload = () => {
     var loadRecipe = JSON.parse(localStorage.getItem("pastHistoryArray")) ?? [];
     for(var i=0; i<loadRecipe.length; i++) {
@@ -201,6 +202,57 @@ window.onload = () => {
         recipeButton.id = pullRecipeButton;
         pastRecipe.appendChild(recipeButton);
     }
+    fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=A Whisker Away&r=json&page=1", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+        "x-rapidapi-key": "1bcdcffaf7msh8ee39bd8bb2df59p1dd6e0jsn113cf6355a62"
+    }
+})
+.then(response => {
+
+    //check for movie
+    
+    
+    if (response.ok) {
+        response.json().then(function(data) {
+            console.log("Movie data", data);
+            displayMovieTitle(data);
+            //checkIfOnNetflix(data);
+            
+        });
+    } else {
+        //!TO REPLACE: This alert will need to be replaced with a modal
+        alert('Error: Movie Not Found')
+    }
+        
+})
+.catch(err => {
+    console.error(err);
+});
+
+fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 4000 +"/information", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "x-rapidapi-key": "1bcdcffaf7msh8ee39bd8bb2df59p1dd6e0jsn113cf6355a62"
+    }
+})
+.then(response => {
+    if (response.ok) {
+        response.json().then(function(data) {
+            console.log("Recipe data", data);
+            displayRecipe(data);
+            
+        });
+    } else {
+        //!TO REPLACE: This alert will need to be replaced with a modal
+        alert('Error: Recipe Not Found')
+    }
+})
+.catch(err => {
+    console.error(err);
+});
 }
 
 
