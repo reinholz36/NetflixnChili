@@ -11,9 +11,8 @@ User Story
 https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1
 https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information
 
-<a href="https://funnygeeky.github.io/work-day-scheduler/">
+<a href="https://reinholz36.github.io/NetflixnChili/">
 <img src="./assets/images/pg-hdg-title.png" alt="Netflix N' Chili" page title">
 </a>
-
 
 
