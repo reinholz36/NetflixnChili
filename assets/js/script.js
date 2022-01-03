@@ -231,7 +231,7 @@ window.onload = () => {
     console.error(err);
 });
 
-fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 4000 +"/information", {
+fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 5006 +"/information", {
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
