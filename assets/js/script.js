@@ -45,9 +45,9 @@ var formSubmitHandler = function(event) {
 function historySelectHandler(event) {
     event.preventDefault();
     if (event.target.matches("button")) {
-        var randomNumber = event.target.id;
-        console.log("recipeId", randomNumber);
-        getRecipe(randomNumber);
+        var historicalRecipe = event.target.id;
+        console.log("recipeId", historicalRecipe);
+        getRecipeHistory(historicalRecipe);
     }
 }
 pastRecipe.addEventListener("click", historySelectHandler)
@@ -68,6 +68,7 @@ var getRecipe = function (randomNumber) {
             response.json().then(function(data) {
                 console.log("Recipe data", data);
                 displayRecipe(data);
+                pastRecipeBox(data);
             });
         } else {
             //!TO REPLACE: This alert will need to be replaced with a modal
@@ -79,8 +80,8 @@ var getRecipe = function (randomNumber) {
     });
 }
 
-// function for pulling past recipe id
-var getRecipe = function (randomNumber) {
+// get recipe based on past recipe button click
+var getRecipeHistory = function (randomNumber) {
     
     fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ randomNumber +"/information", {
         "method": "GET",
@@ -94,6 +95,7 @@ var getRecipe = function (randomNumber) {
             response.json().then(function(data) {
                 console.log("Recipe data", data);
                 displayRecipe(data);
+                
             });
         } else {
             //!TO REPLACE: This alert will need to be replaced with a modal
@@ -103,11 +105,7 @@ var getRecipe = function (randomNumber) {
     .catch(err => {
         console.error(err);
     });
-}
-    
-    // getRecipe();
-    
-    
+}    
     
 //User enteres movie name and getMovie poster image. Search example Avengers Endgame
 //API URL: https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative/
@@ -167,26 +165,28 @@ var displayRecipe = function(data) {
     recipeDirections.textContent = data.instructions;
     recipeList.appendChild(recipeDirections);
     
-    var pastRecipeBox = function(data) {
-        var combineHistory = JSON.parse(localStorage.getItem("pastHistoryArray"));
-        if (combineHistory == null) combineHistory = [];
-        var recipeObject = {
-            key: "recipeTitle",
-            value: data.title,
-            id: data.id,
-        }
-        localStorage.setItem("recipeObject", JSON.stringify(recipeObject));
-        combineHistory.push(recipeObject);
-        localStorage.setItem("pastHistoryArray", JSON.stringify(combineHistory));
-
-        var recipeButton = document.createElement("button");
-        recipeButton.textContent = data.title;
-        recipeButton.id = data.id;
-        pastRecipe.appendChild(recipeButton);
-    }
-    
-    pastRecipeBox(data);
 }
+
+var pastRecipeBox = function(data) {
+    var combineHistory = JSON.parse(localStorage.getItem("pastHistoryArray"));
+    if (combineHistory == null) combineHistory = [];
+    var recipeObject = {
+        key: "recipeTitle",
+        value: data.title,
+        id: data.id,
+    }
+    // localStorage.setItem("recipeObject", JSON.stringify(recipeObject));
+    combineHistory.push(recipeObject);
+    localStorage.setItem("pastHistoryArray", JSON.stringify(combineHistory));
+
+    var recipeButton = document.createElement("button");
+    recipeButton.textContent = data.title;
+    recipeButton.className = "recipeH";
+    recipeButton.id = data.id;
+    pastRecipe.appendChild(recipeButton);
+}
+
+
 
 // This function displays historical recipes
 window.onload = () => {
@@ -197,6 +197,7 @@ window.onload = () => {
 
         var recipeButton = document.createElement("button");
         recipeButton.textContent = pullRecipeName;
+        recipeButton.className = "recipeH";
         recipeButton.id = pullRecipeButton;
         pastRecipe.appendChild(recipeButton);
     }
