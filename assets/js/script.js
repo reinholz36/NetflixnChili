@@ -13,6 +13,8 @@ var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
 var pastRecipe = document.querySelector("#past-recipe")
 
+
+// Inputs what the user entered into the search bar, then pulls a random recipe by it's ID
 var formSubmitHandler = function(event) {
     event.preventDefault();
     var search = formEntry.value.trim();
@@ -25,7 +27,6 @@ var formSubmitHandler = function(event) {
         getRecipe(randomNumber);
         getMovie(search);
         formEntry.value = "";
-        
     }
 }
 
@@ -33,13 +34,11 @@ function historySelectHandler(event) {
     event.preventDefault();
     if (event.target.matches("button")) {
         var historicalRecipe = event.target.id;
-        console.log("recipeId", historicalRecipe);
         getRecipeHistory(historicalRecipe);
     }
 }
 pastRecipe.addEventListener("click", historySelectHandler)
 
-//Recipe fetch the 479101 in the url below is the recipe id number
 // API URL: https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
 var getRecipe = function (randomNumber) {
     
@@ -53,7 +52,6 @@ var getRecipe = function (randomNumber) {
     .then(response => {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log("Recipe data", data);
                 displayRecipe(data);
                 pastRecipeBox(data);
             });
@@ -79,7 +77,6 @@ var getRecipeHistory = function (historicalRecipe) {
     .then(response => {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log("Recipe data", data);
                 displayRecipe(data);
                 
             });
@@ -107,7 +104,6 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
     //check for movie
     if (response.ok) {
         response.json().then(function(data) {
-            console.log("Movie data", data);
             displayMovieTitle(data);
         });
     } else {
@@ -130,7 +126,6 @@ var displayMovieTitle = function(data) {
 };
 
 var displayRecipe = function(data) {
-    console.log("displayRecipe", data);
     
     recipeTitle.textContent = data.title;
     recipeTitleParent.appendChild(recipeTitle);
@@ -156,7 +151,6 @@ var pastRecipeBox = function(data) {
         value: data.title,
         id: data.id,
     }
-    // localStorage.setItem("recipeObject", JSON.stringify(recipeObject));
     combineHistory.push(recipeObject);
     localStorage.setItem("pastHistoryArray", JSON.stringify(combineHistory));
 
@@ -196,10 +190,7 @@ window.onload = () => {
     
     if (response.ok) {
         response.json().then(function(data) {
-            console.log("Movie data", data);
             displayMovieTitle(data);
-            //checkIfOnNetflix(data);
-            
         });
     } else {
         swal("Movie no longer found in database", "Try searching for a different movie!", "error");
@@ -221,7 +212,6 @@ fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 44
 .then(response => {
     if (response.ok) {
         response.json().then(function(data) {
-            console.log("Recipe data", data);
             displayRecipe(data);
             
         });
