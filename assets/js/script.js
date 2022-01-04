@@ -36,6 +36,9 @@ var formSubmitHandler = function(event) {
         getMovie(search);
         formEntry.value = "";
     } else {
+        var elems = document.querySelectorAll('#modal1');
+        var instances = M.Modal.init(elems, startingTop);
+        instances.open();
         alert("Movie not valid")
         //!TO REPLACE: This alert will need to be replaced with a modal
         formEntry.value = "";
