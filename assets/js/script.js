@@ -130,7 +130,6 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
             
         });
     } else {
-        alert("Movie not valid")
         //!TO REPLACE: This alert will need to be replaced with a modal
         alert('Error: Movie Not Found')
     }
