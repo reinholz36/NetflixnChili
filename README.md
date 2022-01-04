@@ -40,6 +40,6 @@ Challenges:
 2. Getting the past recipe list proved difficult. Wesley and Dani met on Zoom to fix it.
 
 Slides Deck:
-https://uncvirtbofsfpt112021.slack.com/archives/C02RASPDFED/p1641227254003500
+https://docs.google.com/presentation/d/1q-qOsg-yuz1gkkpJ7qDykmQ2RZFkdNwvI_L1U3htogU/edit?usp=sharing
 
 
