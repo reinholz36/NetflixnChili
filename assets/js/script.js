@@ -18,24 +18,20 @@ var recipeAnchor = document.querySelector("#recipe-anchor")
 var pastRecipe1 = document.querySelector("#past-recipe-1")
 
 var formSubmitHandler = function(event) {
-    // prevent page from reloading
     event.preventDefault();
-
     var search = formEntry.value.trim();
-    var randomNumber = (Math.floor(Math.random() *20) +5000)
-    console.log(randomNumber)
-    if(search) {
-        //randomizeRecipe()
+    //admin selected recipes array that have at least a working title, photo, directions, and link
+    var randomNumber = _.sample([33600, 33034, 33045, 33047, 33049, 33055, 31250, 24573, 36003, 8001, 5006, 450000, 450443]);
+
+    if(!search || search === "") {
+        swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
+    } else {
         getRecipe(randomNumber);
         getMovie(search);
         formEntry.value = "";
-    } else {
-
-        swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
+        
     }
 }
-
-
 
 function historySelectHandler(event) {
     event.preventDefault();
@@ -113,14 +109,10 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
 .then(response => {
 
     //check for movie
-    
-    
     if (response.ok) {
         response.json().then(function(data) {
             console.log("Movie data", data);
             displayMovieTitle(data);
-            //checkIfOnNetflix(data);
-            
         });
     } else {
         swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
@@ -222,8 +214,8 @@ window.onload = () => {
     console.error(err);
 });
 
-
-fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 5006 +"/information", {
+//admin's default recipe id 4444
+fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 4444 +"/information", {
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
