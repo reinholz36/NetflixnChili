@@ -38,45 +38,24 @@
                     <div class="card black z-depth-5 input-field col s12 col m6 border-radius">
                         <label for="search"><i class="material-icons">search</i> Search</label>
                         <input id="search" type="text" class="validate utilitywhite" /> 
-                        <button class="waves-effect waves-light btn-large greenbtn" id="submit-button">Search</button>
+                        <button class="waves-effect waves-light btn-large greenbtn" href="#modal1" id="submit-button">Search</button>
                     </div>
                 </form>
                 
                 <section id="movie-parent" class="col s12 col m6 card black z-depth-5 border-radius center">
                     <h2 id="movie-title">Movie Title:<span id="searched-movie"></span> <img id="movie-poster"> </h2>
                     <p><span id="movie-cover"></span></p>
-                    
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                        <h4>Movie not valid.</h4>
-                        <p>Please enter a valid movie title. EX: Avengers</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
-                    </div>
+                
                 </section>
             </div>
 
             <div class="row">
                 <section class="col s12 col m6">
                     <div class="card black z-depth-5 col s12 col m6 border-radius">
-                    <h3>Past Recipes</h3>
-                    <ul id="past-recipe">
-                        <li><a id="recipe-anchor"></a></li>
-                    </ul>
-
-                    <!-- Modal Structure -->
-                    <div id="modal3" class="modal">
-                        <div class="modal-content">
-                        <h4>Recipe not found.</h4>
-                        <p>Please search for movie again.</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
-                    </div>
+                        <h3>Past Recipes</h3>
+                        <ul id="past-recipe">
+                            <li><a id="recipe-anchor"></a></li>
+                        </ul>
                     </div>
                 </section>
 
@@ -87,17 +66,6 @@
                         <li id="link-list"><a class="hidden" id="recipe-link">Click Here For Full Recipe</a></li>
                         <li id="recipe-list">Directions: <p id="recipe-directions"></p></li>                 
                     </ul>
-
-                    <!-- Modal Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                        <h4>Recipe not found.</h4>
-                        <p>Please search for movie again.</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
-                    </div>
                 </section> 
             </div>
         </div>
@@ -107,7 +75,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="./assets/js/materialize.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
-<!-- I am Michelle pushing this comment to the main branch in Github -->

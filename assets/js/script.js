@@ -17,12 +17,6 @@ var pastRecipe = document.querySelector("#past-recipe")
 var recipeAnchor = document.querySelector("#recipe-anchor")
 var pastRecipe1 = document.querySelector("#past-recipe-1")
 
-// var randomizeRecipe = function() {
-//     var randomNumber = (Math.floor(Math.random() *400000) +1)
-//     console.log("Random Number", randomNumber)
-//     return randomNumber
-// }
-
 var formSubmitHandler = function(event) {
     // prevent page from reloading
     event.preventDefault();
@@ -36,14 +30,12 @@ var formSubmitHandler = function(event) {
         getMovie(search);
         formEntry.value = "";
     } else {
-        var elems = document.querySelectorAll('#modal1');
-        var instances = M.Modal.init(elems, startingTop);
-        instances.open();
-        alert("Movie not valid")
-        //!TO REPLACE: This alert will need to be replaced with a modal
-        formEntry.value = "";
+
+        swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
     }
 }
+
+
 
 function historySelectHandler(event) {
     event.preventDefault();
@@ -74,8 +66,7 @@ var getRecipe = function (randomNumber) {
                 pastRecipeBox(data);
             });
         } else {
-            //!TO REPLACE: This alert will need to be replaced with a modal
-            alert('Error: Recipe Not Found')
+            swal("Recipe not found", "Please search for movie again!", "error");
         }
     })
     .catch(err => {
@@ -101,8 +92,7 @@ var getRecipeHistory = function (historicalRecipe) {
                 
             });
         } else {
-            //!TO REPLACE: This alert will need to be replaced with a modal
-            alert('Error: Recipe Not Found')
+            swal("Recipe no longer found in database", "Try a different recipe!", "error");
         }
     })
     .catch(err => {
@@ -133,8 +123,7 @@ fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ search +"&r=
             
         });
     } else {
-        //!TO REPLACE: This alert will need to be replaced with a modal
-        alert('Error: Movie Not Found')
+        swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
     }
         
 })
@@ -225,8 +214,7 @@ window.onload = () => {
             
         });
     } else {
-        //!TO REPLACE: This alert will need to be replaced with a modal
-        alert('Error: Movie Not Found')
+        swal("Movie no longer found in database", "Try searching for a different movie!", "error");
     }
         
 })
@@ -235,7 +223,7 @@ window.onload = () => {
 });
 
 
-fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 5010 +"/information", {
+fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 5006 +"/information", {
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -250,8 +238,7 @@ fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 50
             
         });
     } else {
-        //!TO REPLACE: This alert will need to be replaced with a modal
-        alert('Error: Recipe Not Found')
+        swal("Recipe no longer found in database", "Try searching for a different movie to pull a different recipe!", "error");
     }
 })
 .catch(err => {
