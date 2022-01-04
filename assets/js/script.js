@@ -1,11 +1,9 @@
 var formEntry = document.querySelector("#search");
 var submitButton = document.querySelector("#submit-button")
-var searchedMovie = document.querySelector("#searched-movie")
 var movieTitle = document.querySelector("#movie-title")
 var movieParent = document.querySelector("#movie-parent")
 var moviePoster = document.querySelector("#movie-poster")
 var image = document.querySelector("#image")
-var recipeParent = document.querySelector("#recipe-parent")
 var recipeImage = document.querySelector("#recipe-image")
 var recipeTitle = document.querySelector("#recipe-title")
 var recipeTitleParent = document.querySelector("#recipe-title-parent")
@@ -14,8 +12,6 @@ var recipeDirections = document.querySelector("#recipe-directions")
 var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
 var pastRecipe = document.querySelector("#past-recipe")
-var recipeAnchor = document.querySelector("#recipe-anchor")
-var pastRecipe1 = document.querySelector("#past-recipe-1")
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
