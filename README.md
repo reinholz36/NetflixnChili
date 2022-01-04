@@ -8,11 +8,21 @@ User Story
 1. HTML and CSS Styling were created to give a Netflix-like feel with the Netflix'N Chili Heading and image of a chili using materialize along with custom CSS.
 
 2. Fetch functions are used to pull information from the following Netflix and Chili APIs:
-https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1
-https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information
+* https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1
+* https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information
 
 <a href="https://reinholz36.github.io/NetflixnChili/">
 <img src="./assets/images/pg-hdg-title.png" alt="Netflix N' Chili" page title">
 </a>
 
+Milestones:
+1. Dani established the initial HTML layout and CSS with a nice header, forms, background, and images. He also obtained the Netflix and Spoonacular Recipe API keys and confirmed they responded when the API key was passed through the fetch function.
+2. Wesley wrote the initial function to display the movie title.
+3. During a group Zoom, Dani and Wesley were able get  to the movie poster display as well.
+4. With the group, Michelle found an attribute to hide the recipe link then show it when a movie search result was returned along with a recipe.
+5. Dani made a bonus feature of having Admin picks presented on the site.
+Challenges:
+1. Git issues such as untracked branches and merge conflicts. Usually we were able to resolve them within VS code by accepting the current or incoming changes.
+2. Getting the past recipe list proved difficult. Wesley and Dani met on Zoom to fix it.
+*3. Dani fixed a button issue.
 
