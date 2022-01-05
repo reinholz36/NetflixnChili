@@ -12,7 +12,7 @@ var recipeDirections = document.querySelector("#recipe-directions")
 var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
 var pastRecipe = document.querySelector("#past-recipe")
-
+var pastRecipeContainer = document.querySelector("#pastRecipeContainer")
 
 // Inputs what the user entered into the search bar, then pulls a random recipe by it's ID
 var formSubmitHandler = function(event) {
@@ -154,6 +154,8 @@ var pastRecipeBox = function(data) {
     combineHistory.push(recipeObject);
     localStorage.setItem("pastHistoryArray", JSON.stringify(combineHistory));
 
+    pastRecipeContainer.className = "show card black z-depth-5 col s12 col m6 border-radius"
+
     var recipeButton = document.createElement("button");
     recipeButton.textContent = data.title;
     recipeButton.className = "recipeH";
@@ -169,6 +171,8 @@ window.onload = () => {
     for(var i=0; i<loadRecipe.length; i++) {
         var pullRecipeName = loadRecipe[i].value
         var pullRecipeButton = loadRecipe[i].id
+
+        pastRecipeContainer.className = "show card black z-depth-5 col s12 col m6 border-radius"
 
         var recipeButton = document.createElement("button");
         recipeButton.textContent = pullRecipeName;
