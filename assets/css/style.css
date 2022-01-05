@@ -57,6 +57,25 @@ img, .imgUtility {
     padding: 1%;
 }
 
+.pepper {
+    color: darkgreen;
+    background-color: black;
+    border-color: black;
+    border-radius: 1rem;
+}
+
+.pepper:hover {
+    border-color: crimson;
+    background-color: black;
+    border-radius: 1rem;
+}
+
+.pepper:focus {
+    border-color: black;
+    background-color: black;
+    border-radius: 1rem;
+}
+
 .greenbtn {
     background-color: black;
     color: blanchedalmond;
@@ -95,18 +114,11 @@ img, .imgUtility {
     box-shadow: 2px 2px rgba(0, 0, 0, 0);
     background-color: crimson;
   }
-/* Title text */
-/* .t1 {}
-.t2 {}
-.t3 {}
-.t4 {}
-.t5 {}
-.t6 {}
-.t7 {}
-.t8 {}
-.t9 {}
-.t10 {}
-.t11 {}
-.t12 {}
-.t13 {}
-.t14 {} */
+
+@media screen and (max-width: 325px) {
+    h1 {
+        margin: 0;
+        text-align: center;
+        font-weight: 300;
+    }
+}

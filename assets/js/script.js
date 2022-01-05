@@ -13,18 +13,19 @@ var linkList = document.querySelector("#link-list")
 var recipeList = document.querySelector("#recipe-list")
 var pastRecipe = document.querySelector("#past-recipe")
 var pastRecipeContainer = document.querySelector("#pastRecipeContainer")
+var randomRecipeBtn = document.querySelector("#pepperBtn")
+
+
 
 // Inputs what the user entered into the search bar, then pulls a random recipe by it's ID
 var formSubmitHandler = function(event) {
     event.preventDefault();
     var search = formEntry.value.trim();
-    //admin selected recipes array that have at least a working title, photo, directions, and link
-    var randomNumber = _.sample([33600, 33045, 33047, 33049, 31250, 24573, 36003, 8001, 5006, 450000, 450443, 10122, 31422, 422, 51224, 1924, 7192, 7942, 7932, 7702, 7502, 7202, 7812, 7612, 9993, 43303, 499, 699, 899, 2999, 4999, 7999, 8999, 8990, 8987, 8984, 8982, 8978, 8977, 8976]);
     
     if(!search || search === "") {
         swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
     } else {
-        getRecipe(randomNumber);
+        getRecipe();
         getMovie(search);
         formEntry.value = "";
     }
@@ -40,8 +41,10 @@ function historySelectHandler(event) {
 pastRecipe.addEventListener("click", historySelectHandler)
 
 // API URL: https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
-var getRecipe = function (randomNumber) {
-    
+var getRecipe = function () {
+    //admin selected recipes array that have at least a working title, photo, directions, and link
+    var randomNumber = _.sample([33600, 33045, 33047, 33049, 31250, 24573, 36003, 8001, 5006, 450000, 450443, 10122, 31422, 422, 51224, 1924, 7192, 7942, 7932, 7702, 7502, 7202, 7812, 7612, 9993, 43303, 499, 699, 899, 2999, 4999, 7999, 8999, 8990, 8987, 8984, 8982, 8978, 8977, 8976]);
+
     fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ randomNumber +"/information", {
         "method": "GET",
         "headers": {
@@ -135,7 +138,7 @@ var displayRecipe = function(data) {
 
     recipeLink.setAttribute("href", data.sourceUrl);
     recipeLink.setAttribute("target", "_blank");
-    recipeLink.className = "show";
+    recipeLink.className = "show card black z-depth-5 col s12 col m6 border-radius";
     linkList.appendChild(recipeLink);
 
     recipeDirections.textContent = data.instructions;
@@ -161,24 +164,25 @@ var pastRecipeBox = function(data) {
     recipeButton.className = "recipeH";
     recipeButton.id = data.id;
     pastRecipe.appendChild(recipeButton);
+
 }
 
 
 
 // This function displays admin's choice and historical recipe buttons
 window.onload = () => {
+    
     var loadRecipe = JSON.parse(localStorage.getItem("pastHistoryArray")) ?? [];
     for(var i=0; i<loadRecipe.length; i++) {
         var pullRecipeName = loadRecipe[i].value
         var pullRecipeButton = loadRecipe[i].id
-
         pastRecipeContainer.className = "show card black z-depth-5 col s12 col m6 border-radius"
-
         var recipeButton = document.createElement("button");
         recipeButton.textContent = pullRecipeName;
         recipeButton.className = "recipeH";
         recipeButton.id = pullRecipeButton;
         pastRecipe.appendChild(recipeButton);
+
     }
     fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?s=A Whisker Away&r=json&page=1", {
     "method": "GET",
@@ -230,5 +234,5 @@ fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 44
 
 
 
-
+randomRecipeBtn.addEventListener("click", getRecipe);
 submitButton.addEventListener("click", formSubmitHandler);
