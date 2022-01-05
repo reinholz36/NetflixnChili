@@ -19,7 +19,7 @@ var formSubmitHandler = function(event) {
     event.preventDefault();
     var search = formEntry.value.trim();
     //admin selected recipes array that have at least a working title, photo, directions, and link
-    var randomNumber = _.sample([33600, 33045, 33047, 33049, 31250, 24573, 36003, 8001, 5006, 450000, 450443, 10122, 31422, 422, 51224, 1924, 7192, 7942, 7932, 7702, 7502, 7202, 7812, 7612, 9993, 43303, 499, 699, 899, 2999, 4999, 7999, 8999, 8990, 8987, 8984, 8982]);
+    var randomNumber = _.sample([33600, 33045, 33047, 33049, 31250, 24573, 36003, 8001, 5006, 450000, 450443, 10122, 31422, 422, 51224, 1924, 7192, 7942, 7932, 7702, 7502, 7202, 7812, 7612, 9993, 43303, 499, 699, 899, 2999, 4999, 7999, 8999, 8990, 8987, 8984, 8982, 8978, 8977, 8976]);
     
     if(!search || search === "") {
         swal("Movie Not Found", "Try again! Example entry, The Avengers", "error");
