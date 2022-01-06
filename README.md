@@ -2,12 +2,12 @@
 Collaborators: Dani Reinholz, Wesley Bryant, Michelle Wood
 
 Technologies used:
-HTML
-CSS
-Materialize
-JavaScript
-Lodash
-Sweetalert
+* HTML
+* CSS
+* Materialize
+* JavaScript
+* Lodash
+* Sweetalert
 
 User Story
 1. As a User, I want to search a movie title in Netflix and have it return the Movie Title and Poster image.
@@ -17,8 +17,8 @@ User Story
 
 Server-side APIs used:
 
-* https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1
-* https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information
+* Movie Database: https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative/
+* Recipe - Food - Nutrition: https://rapidapi.com/spoonacular/api/recipe-food-nutrition/
 
 Link to live site: 
 https://reinholz36.github.io/NetflixnChili/
