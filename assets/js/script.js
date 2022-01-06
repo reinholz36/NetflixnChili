@@ -14,7 +14,7 @@ var recipeList = document.querySelector("#recipe-list")
 var pastRecipe = document.querySelector("#past-recipe")
 var pastRecipeContainer = document.querySelector("#pastRecipeContainer")
 var randomRecipeBtn = document.querySelector("#pepperBtn")
-
+var clearPastRecipes = document.querySelector("#clearpastrecipes")
 
 
 // Inputs what the user entered into the search bar, then pulls a random recipe by it's ID
@@ -158,7 +158,7 @@ var pastRecipeBox = function(data) {
     localStorage.setItem("pastHistoryArray", JSON.stringify(combineHistory));
 
     pastRecipeContainer.className = "show card black z-depth-5 col s12 col m6 border-radius"
-
+   
     var recipeButton = document.createElement("button");
     recipeButton.textContent = data.title;
     recipeButton.className = "recipeH";
@@ -167,6 +167,15 @@ var pastRecipeBox = function(data) {
 
 }
 
+var clearPastRecipeBox = function() {
+    var clearOldRecipeEl = JSON.parse(localStorage.getItem("pastHistoryArray")) ?? [];
+    for(var i=0; i<clearOldRecipeEl.length; i++){
+        var oldrecipes = document.querySelector(".recipeH")
+        pastRecipe.removeChild(oldrecipes);
+    }
+    localStorage.removeItem("pastHistoryArray");
+    pastRecipeContainer.className = "hidden card black z-depth-5 col s12 col m6 border-radius"
+}
 
 
 // This function displays admin's choice and historical recipe buttons
@@ -233,6 +242,6 @@ fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+ 44
 }
 
 
-
+clearPastRecipes.addEventListener("click", clearPastRecipeBox);
 randomRecipeBtn.addEventListener("click", getRecipe);
 submitButton.addEventListener("click", formSubmitHandler);
